@@ -1,0 +1,11 @@
+MOV R0, #0 // sum
+MOV R1, #12 // op1
+MOV R2, #5 // op2
+CMP R1, #0
+JEQ 8
+LSR R3, R1, #1 // use overflow to determine LSB of R1
+JCC #2 // if no carry flag, no overflow, meaning LSB != 1
+ADD R0, R2 // sum = sum + op2shifted
+LSL R2, R2, #1
+LSR R1, R1, #1
+JMP -7

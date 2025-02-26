@@ -1,0 +1,3 @@
+MOV R1, #127
+MOV R2, #127
+MOV R1, R1, R2 // RC = 1

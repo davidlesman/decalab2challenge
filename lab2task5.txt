@@ -1,0 +1,15 @@
+MOV R0, #0 // lower bits sum
+MOV R1, #0 // upper bits sum
+MOV R2, #127 // op1 (Ox007F)
+MOV R4, #127 // lower bits op2 (8323199)
+MOV R5, #127 // upper bits op2
+CMP R2, #0
+JEQ 10
+LSR R6, R2, #1 // extract LSB op1
+JCC #3
+ADD R0, R4
+ADC R1, R5 // upper bits add with carry in case of overflow
+LSL R4, R4, #1 // shift lower bits op2
+ADC R5, R5, R5 // bring in carry to shift upper bits
+LSR R2, R2, #1 // shift op1
+JMP -9
